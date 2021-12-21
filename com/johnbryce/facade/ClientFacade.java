@@ -10,12 +10,10 @@ import com.johnbryce.dao.imp.CustomersDBDAO;
 
 public abstract class ClientFacade {
 
-	protected CompaniesDAO companiesDAO =new CompaniesDBDAO();
+	protected CompaniesDAO companiesDAO = new CompaniesDBDAO();
 	protected CustomersDAO customersDAO = new CustomersDBDAO();
 	protected CouponsDAO couponsDAO = new CouponsDBDAO();
 
 	public abstract boolean login(String email, String password) throws GenralException;
-
-	
 
 }

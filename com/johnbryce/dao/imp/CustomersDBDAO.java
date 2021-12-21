@@ -17,7 +17,7 @@ public class CustomersDBDAO implements CustomersDAO {
 	private ConnectionPool cp = ConnectionPool.getInstance();
 
 	@Override
-	public boolean isCustomerExists(String email, String password) throws CustomersDBExpetion  {
+	public boolean isCustomerExists(String email, String password) throws CustomersDBExpetion {
 		Connection con = cp.getConnection();
 
 		try {
@@ -27,7 +27,7 @@ public class CustomersDBDAO implements CustomersDAO {
 			stmt.setString(2, password);
 
 			ResultSet rset = stmt.executeQuery();
-			
+
 			return rset.next();
 
 		} catch (SQLException e) {
@@ -41,32 +41,33 @@ public class CustomersDBDAO implements CustomersDAO {
 	public void addCustomer(Customer customer) throws CustomersDBExpetion {
 		Connection con = cp.getConnection();
 		try {
-			PreparedStatement stmt = con.prepareStatement(
-					"Insert into customers (FirstName, LastName, Email,Password) values (?,?,?,?)");
+			PreparedStatement stmt = con
+					.prepareStatement("Insert into customers (FirstName, LastName, Email,Password) values (?,?,?,?)");
 			stmt.setString(1, customer.getFirstName());
 			stmt.setString(2, customer.getLasrName());
 			stmt.setString(3, customer.getEmail());
 			stmt.setString(4, customer.getPassword());
 			stmt.execute();
-			
+
 		} catch (SQLException e) {
 			throw new CustomersDBExpetion();
-			} finally {
+		} finally {
 			cp.restoreConnection(con);
 		}
 	}
 
 	/**
 	 * update customer by email
-	 * @throws CustomersDBExpetion 
+	 * 
+	 * @throws CustomersDBExpetion
 	 */
 	@Override
 	public void updatedCustomer(Customer customer) throws CustomersDBExpetion {
 		Connection con = cp.getConnection();
-		
+
 		try {
-			PreparedStatement stmt = con.prepareStatement(
-					"UPDATE customers SET FirstName=?, LastName=? where Email = ?");
+			PreparedStatement stmt = con
+					.prepareStatement("UPDATE customers SET FirstName=?, LastName=? where Email = ?");
 			stmt.setString(1, customer.getFirstName());
 			stmt.setString(2, customer.getLasrName());
 			stmt.setString(3, customer.getEmail());
@@ -87,7 +88,7 @@ public class CustomersDBDAO implements CustomersDAO {
 			PreparedStatement stmt = con.prepareStatement("DELETE FROM customers WHERE ID= ?");
 			stmt.setInt(1, customerID);
 			stmt.execute();
-		
+
 		} catch (SQLException e) {
 			throw new CustomersDBExpetion();
 		} finally {
@@ -190,8 +191,7 @@ public class CustomersDBDAO implements CustomersDAO {
 		Connection con = cp.getConnection();
 
 		try {
-			PreparedStatement stmt = con
-					.prepareStatement("SELECT email FROM customers where email=?");
+			PreparedStatement stmt = con.prepareStatement("SELECT email FROM customers where email=?");
 			stmt.setString(1, email);
 			ResultSet rset = stmt.executeQuery();
 			return (rset.next());
@@ -227,7 +227,5 @@ public class CustomersDBDAO implements CustomersDAO {
 
 		return -999;
 	}
-	
-	
-	}
 
+}

@@ -44,7 +44,8 @@ public class CouponsDBDAO implements CouponsDAO {
 
 	/**
 	 * update coupon by title. title is the "ID" of coupon.
-	 * @throws CouponsDBExpetion 
+	 * 
+	 * @throws CouponsDBExpetion
 	 */
 
 	@Override
@@ -75,7 +76,8 @@ public class CouponsDBDAO implements CouponsDAO {
 
 	/**
 	 * delete coupon from DB and from internal List
-	 * @throws CouponsDBExpetion 
+	 * 
+	 * @throws CouponsDBExpetion
 	 */
 	@Override
 	public void deleteCoupon(int couponID) throws CouponsDBExpetion {
@@ -102,9 +104,10 @@ public class CouponsDBDAO implements CouponsDAO {
 			ResultSet rset = stmt.executeQuery();
 
 			while (rset.next()) {
-				coupons.add(new Coupon(rset.getInt("ID"),rset.getInt("COMPANY_ID"), rset.getInt("CATEGORY_ID"), rset.getString("TITLE"),
-						rset.getString("DESCRIPTION"), rset.getDate("START_DATE"), rset.getDate("END_DATE"),
-						rset.getInt("AMOUNT"), rset.getDouble("PRICE"), rset.getString("IMAGE")));
+				coupons.add(new Coupon(rset.getInt("ID"), rset.getInt("COMPANY_ID"), rset.getInt("CATEGORY_ID"),
+						rset.getString("TITLE"), rset.getString("DESCRIPTION"), rset.getDate("START_DATE"),
+						rset.getDate("END_DATE"), rset.getInt("AMOUNT"), rset.getDouble("PRICE"),
+						rset.getString("IMAGE")));
 
 			}
 		} catch (SQLException e) {
@@ -124,9 +127,9 @@ public class CouponsDBDAO implements CouponsDAO {
 			PreparedStatement stmt = con.prepareStatement("select * from coupons WHERE ID=" + couponID + "");
 			ResultSet rset = stmt.executeQuery();
 			rset.next();
-			return new Coupon(rset.getInt("ID"),rset.getInt("COMPANY_ID"), rset.getInt("CATEGORY_ID"), rset.getNString("TITLE"),
-					rset.getNString("DESCRIPTION"), rset.getDate("START_DATE"), rset.getDate("END_DATE"),
-					rset.getInt("AMOUNT"), rset.getDouble("PRICE"), rset.getString("IMAGE"));
+			return new Coupon(rset.getInt("ID"), rset.getInt("COMPANY_ID"), rset.getInt("CATEGORY_ID"),
+					rset.getNString("TITLE"), rset.getNString("DESCRIPTION"), rset.getDate("START_DATE"),
+					rset.getDate("END_DATE"), rset.getInt("AMOUNT"), rset.getDouble("PRICE"), rset.getString("IMAGE"));
 
 		} catch (SQLException e) {
 			throw new CouponsDBExpetion();
@@ -172,7 +175,8 @@ public class CouponsDBDAO implements CouponsDAO {
 
 	/**
 	 * i add this
-	 * @throws CouponsDBExpetion 
+	 * 
+	 * @throws CouponsDBExpetion
 	 */
 	@Override
 	public boolean isCouponExsist(String couponTitle, int CompanyID) throws CouponsDBExpetion {
@@ -213,9 +217,10 @@ public class CouponsDBDAO implements CouponsDAO {
 
 	/**
 	 * i add this, this will help me
-	 * @throws CouponsDBExpetion 
+	 * 
+	 * @throws CouponsDBExpetion
 	 */
-	
+
 	@Override
 	public int getCategoryId(CATEGORY category) throws CouponsDBExpetion {
 		Connection con = cp.getConnection();
@@ -232,23 +237,3 @@ public class CouponsDBDAO implements CouponsDAO {
 		}
 	}
 }
-	
-
-//	@Override
-//	public boolean isCusomerPurchaseThisCoupon(int couponId) {
-//		Connection con = cp.getConnection();
-//		try {
-//			PreparedStatement stmt = con.prepareStatement("SELECT * FROM customers_vs_coupons WHERE COUPON_ID= ? ");
-//			stmt.setInt(1, couponId);
-//		ResultSet rset = stmt.executeQuery();
-//		return rset.next();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			cp.restoreConnection(con);
-//		}
-//
-//		
-//		return false;
-//	}
-

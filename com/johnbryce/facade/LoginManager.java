@@ -13,14 +13,13 @@ public class LoginManager {
 	private LoginManager() {
 	}
 
-	
 	/**
 	 * public LoginManager getInstance(); 
 	 * 1) purpose: to allow to each client (Admin, customers and company) to sign in.; 
 	 * 2) Description: this make this class singleton
 	 * 
 	 */
-	
+
 	public static LoginManager getInstance() {
 		if (instance == null) {
 			synchronized (LoginManager.class) {
@@ -34,30 +33,29 @@ public class LoginManager {
 	}
 
 	/**
-	 * public  ClientFacade login(); 
+	 * public ClientFacade login(); 
 	 * 1) purpose: to allow to each client (admin, customers and company) to sign in; 
-	 * 2) Description: expect to get-  email(String), password (String), client Type (ClientType)
-	 *    Check the conditions before return client type (with access to the system): 
-	 *    a. check which type is client.
-	 *    b. check if client can login successful.
-	 *   
-	 *   If the conditions are proper return client. 
+	 * 2) Description: expect to get- email(String), password (String), client Type (ClientType) 
+	 * Check the conditions before return client type (with access to the system): 
+	 * a. check which type is client. 
+	 * b. check if client can login successful.
+	 * 
+	 * If the conditions are proper return client.
 	 * 
 	 * 3) use: 
-	 *    a. admin.login(email, password))- expect to get: email(String) and password (String).
-	 *    a. company.login(email, password))- expect to get: email(String) and password (String).
-	 *    a. customer.login(email, password))- expect to get: email(String) and password (String).
-	 * @throws GenralException 
+	 * a. admin.login(email, password))- expect to get: email(String) and password (String). 
+	 * b. company.login(email, password))- expect to get: email(String) and password (String). 
+	 * c. customer.login(email, password))- expect to get: email(String) and password (String).
+	 * 
+	 * @throws GenralException
 	 */
-	
-	
+
 	public ClientFacade login(String email, String password, ClientType clientType) throws GenralException {
 
-		
 		if (clientType == ClientType.ADMNISTRATOR) {
 			AdminFacade admin = new AdminFacade();
 			if (admin.login(email, password)) {
-				//throw exeption
+				// throw exeption
 				return admin;
 			}
 		}
@@ -73,7 +71,7 @@ public class LoginManager {
 				return customer;
 			}
 		}
-		//System.out.println("you faild to login"); throw exception
+		 System.out.println("you faild to login");
 		return null;
 
 	}

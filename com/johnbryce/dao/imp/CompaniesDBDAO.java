@@ -12,11 +12,9 @@ import com.johnbryce.dao.CompaniesDAO;
 import com.johnbryce.database.ConnectionPool;
 
 public class CompaniesDBDAO implements CompaniesDAO {
-	
+
 	private ConnectionPool cp = ConnectionPool.getInstance();
 
-	
-	
 	@Override
 	public boolean isCompanyExists(String email, String password) throws CompaniesDBExpetion {
 		Connection con = cp.getConnection();
@@ -57,7 +55,8 @@ public class CompaniesDBDAO implements CompaniesDAO {
 
 	/**
 	 * update Company by email
-	 * @throws CompaniesDBExpetion 
+	 * 
+	 * @throws CompaniesDBExpetion
 	 */
 	@Override
 	public void updatedCompany(Company company) throws CompaniesDBExpetion {

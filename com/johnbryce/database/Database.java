@@ -13,29 +13,18 @@ public class Database {
 	 * @throws SQLException
 	 *
 	 */
-//	public static Connection getConnection(String username, String password, String schema)   {
-//
-//		try {
-//			return DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schema, username, password);
-//		} catch (SQLException e) {
-//			System.out.println("connection to data base is failed");
-//		}
-//		return null;
-//	
-//	}
 
 	public static Connection getConnection(String username, String password, String schema) throws SQLException {
 
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schema, username, password);
-
 	}
 
 	public static void createDB() throws SQLException {
 
 		/**
-		 *  initialize COMPANIES TABLE
+		 * initialize COMPANIES TABLE
 		 */
-		
+
 		try {
 			Connection con = getConnection("root", "123123", "coupons_system");
 			Statement stmt = con.createStatement();
@@ -91,7 +80,6 @@ public class Database {
 			e.printStackTrace();
 		}
 
-		
 		/**
 		 * initialize CUSTOMERS_VS_COUPONS
 		 */

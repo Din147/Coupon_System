@@ -29,15 +29,15 @@ import com.johnbryce.test.createsObjcetForTest.CreateTestCustomers;
 public class Test {
 
 	/*
-	 * Instruction: 
-	 * start to check from test 1 to 6. 
-	 * do not " // " Previous tests: for example- if you check test 3, it means that test 1 and 2 must be uncomment.
+	 * Instruction: start to check from test 1 to 6. do not " // " Previous tests:
+	 * for example- if you check test 3, it means that test 1 and 2 must be
+	 * uncomment.
 	 */
-	
+
 	public static void testAll() {
 
 		try {
-		//	clearDB();                     use only after you have DB
+			// clearDB(); use only after you have DB
 			Database.createDB();
 
 			CouponExpirationDailyJob cedj = new CouponExpirationDailyJob();

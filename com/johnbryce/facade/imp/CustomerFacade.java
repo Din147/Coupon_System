@@ -17,16 +17,18 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public boolean login(); 1) purpose: to login by client to the system; 2)
-	 * Description: expect to get: email (String) and password(String) check the
-	 * conditions before login customer: a. check that the customer is exist. b. get
-	 * the customerID - this will be use to all client action.
+	 * public boolean login(); 
+	   1) purpose: to login by client to the system; 
+	   2)Description: expect to get: email (String) and password(String) check the
+	     conditions before login customer: 
+	     a. check that the customer is exist. 
+	     b. get the customerID - this will be use to all client action.
 	 * 
 	 * If the conditions are proper return true, else false.
 	 * 
-	 * 3) use: a. customersDAO.isCustomerExists()- expect to get: email(String) and
-	 * password (String). b. customersDAO.getCustomerID() - expect to get:
-	 * email(String) and password (String).
+	 * 3) use: 
+	    a. customersDAO.isCustomerExists()- expect to get: email(String) and password (String). 
+	     b. customersDAO.getCustomerID() - expect to get: email(String) and password (String).
 	 * 
 	 * @throws GenralException
 	 */
@@ -53,19 +55,23 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void purchaseCoupon(); 1) purpose: to purchase Coupon from company to
-	 * customer; 2) Description: expect to get Coupon. check the conditions before
-	 * purchase a Coupon: a. customer can't purchase Coupon with the same title
-	 * twice. b. must be at least 1 amount of coupons and not expired.
+	 * public void purchaseCoupon();
+	    1) purpose: to purchase Coupon from company to customer;
+	    2) Description: expect to get Coupon. check the conditions before purchase a Coupon: 
+	       a. customer can't purchase Coupon with the same title twice. 
+	       b. must be at least 1 amount of coupons and not expired.
 	 * 
 	 * If the conditions are proper, purchase the Coupon and update the coupons
 	 * table.
 	 * 
-	 * 3) use: a. getCustomerCoupons() b. couponsDAO.getOnecoupons() - expect to get
-	 * couponsID (int) c. System.currentTimeMillis() d.
-	 * couponsDAO.addCouponPurchase() - expect to get customer's ID (int) and
-	 * coupon's ID (int) e. couponsDAO.updateCoupon() - expect to get Coupon.
-	 * @throws GenralException 
+	 * 3) use: 
+	 * a. getCustomerCoupons() 
+	 * b. couponsDAO.getOnecoupons() - expect to get couponsID (int) 
+	   c. System.currentTimeMillis() 
+	   d. couponsDAO.addCouponPurchase() - expect to get customer's ID (int) and coupon's ID (int) 
+	   e. couponsDAO.updateCoupon() - expect to get Coupon.
+	 * 
+	 * @throws GenralException
 	 */
 
 	public void purchaseCoupon(Coupon coupon) throws GenralException {
@@ -102,11 +108,12 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public ArrayList<Coupon> getCustomerCoupons(); 1) purpose: to get Customer's
-	 * Coupons from the DB; 2) Description: return ArrayList<Coupon> of the
-	 * Customer's Coupons
+	 * public ArrayList<Coupon> getCustomerCoupons(); 
+	   1) purpose: to get Customer's Coupons from the DB; 
+	   2) Description: return ArrayList<Coupon> of the Customer's Coupons
 	 * 
-	 * 3) use: customersDAO.getOneCustomer() - expect to get customer ID (int)
+	 * 3) use:
+	 *  customersDAO.getOneCustomer() - expect to get customer ID (int)
 	 */
 
 	public ArrayList<Coupon> getCustomerCoupons() {
@@ -119,15 +126,16 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public ArrayList<Coupon> getCustomerCoupons(); 1) purpose: to get Customer's
-	 * Coupons from the DB filters by Category; 2) Description: expect to get
-	 * category (category).
+	 * public ArrayList<Coupon> getCustomerCoupons(); 
+	   1) purpose: to get Customer's Coupons from the DB filters by Category; 
+	   2) Description: expect to get category (category).
+	      a. go over all the Customr's coupons.
+	      b. if there is match in the Category ID, it'll add to the returned ArrayList. 
+	      c. return ArrayList<Coupon>.
 	 * 
-	 * a. go over all the Customr's coupons. b. if there is match in the Category
-	 * ID, it'll add to the returned ArrayList. c. return ArrayList<Coupon>.
-	 * 
-	 * 3) use: a. getCustomerCoupons() b. couponsDAO.getCategoryId() - expect to get
-	 * Category;
+	 * 3) use: 
+	    a. getCustomerCoupons() 
+	    b. couponsDAO.getCategoryId() - expect to get Category;
 	 */
 
 	public ArrayList<Coupon> getCustomerCoupons(CATEGORY category) {
@@ -146,14 +154,15 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public ArrayList<Coupon> getCustomerCoupons(); 1) purpose: to get Customer's
-	 * Coupons from the DB filters by maxPrice; 2) Description: expect to get
-	 * maxPrice (double).
+	 * public ArrayList<Coupon> getCustomerCoupons();
+	 *  1) purpose: to get Customer's Coupons from the DB filters by maxPrice; 
+	 *  2) Description: expect to get maxPrice (double).
+	       a. go over all the Customer's coupons. 
+	       b. if there is match ( <= maxPrice), it'll add to the returned ArrayList. 
+	       c. return ArrayList<Coupon>.
 	 * 
-	 * a. go over all the Customer's coupons. b. if there is match ( <= maxPrice),
-	 * it'll add to the returned ArrayList. c. return ArrayList<Coupon>.
-	 * 
-	 * 3) use: getCustomerCoupons()
+	 * 3) use: 
+	 *    getCustomerCoupons()
 	 */
 
 	public ArrayList<Coupon> getCustomerCoupons(double maxPrice) {
@@ -168,15 +177,18 @@ public class CustomerFacade extends ClientFacade {
 	}
 
 	/**
-	 * public Customer getCustomerDetails(); 1) purpose: to get all Customer's
-	 * detailed from the DB; 2) Description:
+	 * public Customer getCustomerDetails(); 
+	    1) purpose: to get all Customer's detailed from the DB; 
+	    2) Description:
+	 *    a. get from the DB the Customer, details. 
+	 *    b. get from the DB the Coupons ArrayList. 
+	 *    c. return Customer.
 	 * 
-	 * a. get from the DB the Customer, details. b. get from the DB the Coupons
-	 * ArrayList. c. return Customer.
+	 *  3) use:
+	 *   a. customersDAO.getOneCustomer() - expect to get customerID (int) 
+	 *   b. getCustomerCoupons().
 	 * 
-	 * 3) use: a. customersDAO.getOneCustomer() - expect to get customerID (int) b.
-	 * etCustomerCoupons().
-	 * @throws GenralException 
+	 * @throws GenralException
 	 */
 
 	public Customer getCustomerDetails() throws GenralException {

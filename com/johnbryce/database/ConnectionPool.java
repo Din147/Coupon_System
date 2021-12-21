@@ -1,4 +1,5 @@
 package com.johnbryce.database;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,18 +22,17 @@ public class ConnectionPool {
 	 * set @connection(0);
 	 */
 
-
 	public Connection getConnection() {
 
 		if (connections.isEmpty()) {
-				try {
-					connections.wait();
+			try {
+				connections.wait();
 
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			synchronized (connections) {
+		}
+		synchronized (connections) {
 			for (Connection con : connections) {
 				connections.remove(con);
 				return con;
@@ -46,7 +46,7 @@ public class ConnectionPool {
 	 */
 	public void restoreConnection(Connection connection) {
 		if (connection != null) {
-		synchronized (connections) {
+			synchronized (connections) {
 				// System.out.println("Connection returned");
 				connections.add(connection);
 				connections.notify();
@@ -55,23 +55,22 @@ public class ConnectionPool {
 	}
 
 	public void closeAllConnectios() throws GenralException {
-	 List<Connection> temp =new ArrayList<Connection>();
-	 if (connections.isEmpty()) {
-		 throw new GenralException("connections is empty");
-	 }else {
-	
-			for (Connection con :connections){
+		List<Connection> temp = new ArrayList<Connection>();
+		if (connections.isEmpty()) {
+			throw new GenralException("connections is empty");
+		} else {
+
+			for (Connection con : connections) {
 				synchronized (connections) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			}
-	 }
+		}
 	}
-	
 
 	/**
 	 * to make this class to single ton
@@ -82,17 +81,17 @@ public class ConnectionPool {
 				if (instance == null) {
 					instance = new ConnectionPool();
 					connections = new HashSet<Connection>();
-						try {
-							for (int i = 0; i < 10; i++) { 
-								connections.add(DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "coupons_system", "root", "123123"));
-							}} catch (SQLException e) {
-							e.printStackTrace();
+					try {
+						for (int i = 0; i < 10; i++) {
+							connections.add(DriverManager.getConnection(
+									"jdbc:mysql://localhost:3306/" + "coupons_system", "root", "123123"));
 						}
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
 				}
 			}
+		}
 		return instance;
-}
-
-// i this i miss how to create a connection
+	}
 }

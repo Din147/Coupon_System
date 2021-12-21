@@ -17,8 +17,9 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public boolean login(String email, String password). get password and email
-	 * by user (in this case it's hard coded data). This is always return true.
+	 * public boolean login(String email, String password). 
+	 * get password and email by user (in this case it's hard coded data). 
+	 * This is always return true.
 	 */
 
 	@Override
@@ -29,15 +30,19 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void addCompany(); 1) purpose: to add Company to the DB; 2)
+	 * public void addCompany(); 
+	 * 1) purpose: to add Company to the DB; 
+	 * 2)
 	 * Description: expect to get Company, check the conditions before add a
-	 * company: a. can't add company with the same name that already exist. b. can't
-	 * add company with the same email that already exist.
+	 * company: 
+	 *  a. can't add company with the same name that already exist. 
+	 *  b. can't add company with the same email that already exist.
 	 * 
 	 * If the conditions are proper, add company to the DB.
 	 * 
-	 * 3) use: a. companiesDAO.getallCompanies(). b. companiesDAO.addCompany() -
-	 * expect to get Company.
+	 * 3) use: 
+	 * a. companiesDAO.getallCompanies(). 
+	 * b. companiesDAO.addCompany() - expect to get Company.
 	 * 
 	 * @throws GenralException
 	 */
@@ -64,14 +69,17 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void UpdatedCompany(); 1) purpose: to update Company in the DB; 2)
-	 * Description:exepct to get Company, check the conditions before updated a
-	 * company: a. can't update company name. b. can't update company email.
+	 * public void UpdatedCompany(); 
+	 * 1) purpose: to update Company in the DB; 
+	 * 2)Description:exepct to get Company, check the conditions before updated a company: 
+	 *   a. can't update company name. 
+	 *   b. can't update company email.
 	 * 
 	 * If the conditions are proper, updated the company to the DB.
 	 * 
-	 * 3) use: a. companiesDAO.getOneCompany() -expect to get CompanyiD (int) b.
-	 * companiesDAO.updatedCompany() -expect to get Company.
+	 * 3) use: 
+	    a. companiesDAO.getOneCompany() -expect to get CompanyiD (int) 
+	    b. companiesDAO.updatedCompany() -expect to get Company.
 	 * 
 	 * @throws GenralException
 	 */
@@ -90,13 +98,17 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void deleteCompany(); 1) purpose: to delete Company from the DB; 2)
-	 * Description:exepct to get CompanyID (int). a. delete all coupons (of company)
-	 * from customers. b. delete all coupons (of company) from purchase table. c.
-	 * delete company.
+	 * public void deleteCompany(); 
+	 * 1) purpose: to delete Company from the DB; 
+	 * 2) Description:exepct to get CompanyID (int). 
+	    a. delete all coupons (of company) from customers. 
+	    b. delete all coupons (of company) from purchase table. 
+	    c. delete company.
 	 * 
-	 * 3) use: a. getAllCustomer(). b. customer.getCoupons().
-	 * c.companiesDAO.deleteCompany() expect to get CompanyId (int)
+	 * 3) use: 
+	 *  a. getAllCustomer(). 
+	 *  b. customer.getCoupons().
+	 *  c.companiesDAO.deleteCompany() expect to get CompanyId (int)
 	 */
 
 	public void deleteCompany(int companyID) {
@@ -118,11 +130,13 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public Company getOneCompany(); 1) purpose: to getOneCompany from the DB; 2)
-	 * Description:exepct to get CompanyID (int). return Company that selected by
-	 * Company ID.
+	 * public Company getOneCompany(); 
+	 *  1) purpose: to getOneCompany from the DB; 
+	 *  2) Description:exepct to get CompanyID (int). 
+	 *  return Company that selected by Company ID.
 	 * 
-	 * 3) use: companiesDAO.getOneCompany() expect to get CompanyId (int)
+	 * 3) use: 
+	 *    companiesDAO.getOneCompany() expect to get CompanyId (int)
 	 * 
 	 * @throws GenralException
 	 */
@@ -144,9 +158,9 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public ArrayList<Company> getAllCompany(); 1) purpose: to getAllCompany from
-	 * the DB; 2) Description" return All Companies from the DB in an ArrayList.
-	 * 
+	 * public ArrayList<Company> getAllCompany();
+	 * 1) purpose: to getAllCompany from the DB; 
+	 * 2) Description" return All Companies from the DB in an ArrayList.
 	 * 3) use: companiesDAO.getallCompanies().
 	 */
 
@@ -161,14 +175,16 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void addCustomer(); 1) purpose: to add Customer to the DB; 2)
-	 * Description: expect to get Customer, check the conditions before add a
-	 * Customer: a. can't add Customer with the Email that already exist.
+	 * public void addCustomer(); 
+	 * 1) purpose: to add Customer to the DB; 
+	 * 2) Description: expect to get Customer, check the conditions before add a Customer: 
+	 *   a. can't add Customer with the Email that already exist.
 	 * 
 	 * If the condition are proper, add Customer to the DB.
 	 * 
-	 * 3) use: a. customersDAO.iseEmailExists() - expect to get Customer's email
-	 * (String) b. customersDAO.addCustomer() - expect to get customer.
+	 * 3) use: 
+	 * a. customersDAO.iseEmailExists() - expect to get Customer's email (String) 
+	 * b. customersDAO.addCustomer() - expect to get customer.
 	 * 
 	 * @throws GenralException
 	 */
@@ -190,14 +206,16 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void updatedCustomer(); 1) purpose: to update Customer in the DB; 2)
-	 * Description:exepct to get Customer, check the condition before updated a
-	 * Customer: can't update Customer password.
+	 * public void updatedCustomer(); 
+	   1) purpose: to update Customer in the DB; 
+	   2) Description:exepct to get Customer, check the condition before updated a
+	 *     Customer: can't update Customer password.
 	 * 
 	 * If the condition are proper, updated the Customer to the DB.
 	 * 
-	 * 3) use: a. getOneCustomer() -expect to get password (String). b.
-	 * customersDAO.updatedCustomer -expect to get Customer.
+	 * 3) use:
+	 *  a. getOneCustomer() -expect to get password (String). 
+	 *  b. customersDAO.updatedCustomer -expect to get Customer.
 	 * 
 	 * @throws GenralException
 	 */
@@ -219,16 +237,18 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public void deleteCustomer(); 1) purpose: to delete Customer from the DB; 2)
-	 * Description:exepct to get CustomerID (int). a. check if customer is exist-
-	 * not null a. delete all coupons (of Customer) from purchase table. b. delete
-	 * customer cash coupons list. c. delete customer.
+	 * public void deleteCustomer(); 
+	 * 1) purpose: to delete Customer from the DB; 
+	 * 2) Description:exepct to get CustomerID (int). 
+	 * a. check if customer is exist- not null 
+	 * b. delete all coupons (of Customer) from purchase table. 
+	 * c. delete customer cash coupons list. 
+	 * d. delete customer.
 	 * 
 	 * 3) use:
-	 * 
-	 * a. getOneCustomer() - expect to get CustomerID(int). b.
-	 * couponsDAO.deletCouponPurchase() - expect to get CustomerID(int). c.
-	 * customersDAO.deleteCustomer() - expect to get CustomerID (int).
+	 * a. getOneCustomer() - expect to get CustomerID(int). 
+	 * b. couponsDAO.deletCouponPurchase() - expect to get CustomerID(int). 
+	 * c. customersDAO.deleteCustomer() - expect to get CustomerID (int).
 	 * 
 	 * @throws GenralException
 	 */
@@ -258,11 +278,12 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public ArrayList<Company> getAllCustomer(); 1) purpose: to get All Customers
-	 * from the DB; 2) Description: return All Customers from the DB in an
-	 * ArrayList.
+	 * public ArrayList<Company> getAllCustomer(); 
+	 * 1) purpose: to get All Customers from the DB; 
+	 * 2) Description: return All Customers from the DB in an ArrayList.
 	 * 
-	 * 3) use: customersDAO.getAllCustomers().
+	 * 3) use: 
+	 * customersDAO.getAllCustomers().
 	 */
 
 	public ArrayList<Customer> getAllCustomer() {
@@ -275,11 +296,13 @@ public class AdminFacade extends ClientFacade {
 	}
 
 	/**
-	 * public Company getOneCustomer(); 1) purpose: to get One Customer from the DB;
-	 * 2) Description:exepct to get CustomerID (int). return Customer that selected
-	 * by Customer ID.
+	 * public Company getOneCustomer(); 
+	 * 1) purpose: to get One Customer from the DB;
+	 * 2) Description:exepct to get CustomerID (int). 
+	 *    return Customer that selected by Customer ID.
 	 * 
-	 * 3) use: customersDAO.getOneCustomer() - expect to get CustomerID (int)
+	 * 3) use: 
+	 * customersDAO.getOneCustomer() - expect to get CustomerID (int)
 	 * 
 	 * @throws GenralException
 	 */
